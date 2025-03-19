@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();
 
-        if (username === 'team-1' && password === 'project') {
+        if (username && password === 'project') {
             errorMessage.classList.add('hidden');
             //inputdagi malumotlar saqlanaydigan object
             const userData = {
