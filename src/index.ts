@@ -79,6 +79,7 @@ function createTbody() {
   table.appendChild(tbody);
 }
 
+// Tugallanmagan
 function pagenation(){
   let btns = [];
   const div = document.createElement("div");
