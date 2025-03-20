@@ -1,6 +1,12 @@
 import { state } from './constants.js';
 
 const table = document.createElement('table');
+
+let currentPage = 1;
+const itemsPerPage = 3;
+const paginationDiv = document.createElement("div");
+
+
 function createThead() {
   table.classList.add('border', 'border-gray-400', 'text-left', 'w-[50%]');
   const thead = document.createElement('thead');
@@ -18,22 +24,18 @@ function createThead() {
   table.appendChild(thead);
 }
 
-function renderFunction() {
-  pagenation();
-  createThead();
-  createTbody();
-  document.body.appendChild(table);
-}
-
 function createTbody() {
   const tbody = document.createElement('tbody');
 
-  state.movies.forEach(movie => {
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const paginatedMovies = state.movies.slice(start, end);
+
+  paginatedMovies.forEach(movie => {
     const row = document.createElement('tr');
     row.classList.add('border-t', 'border-gray-300');
 
     const keys = Object.keys(movie);
-
     for (let i = 0; i < keys.length; i++) {
       if (keys[i] !== "id") {
         const td = document.createElement('td');
@@ -52,49 +54,62 @@ function createTbody() {
     heartAction.appendChild(heartBtn);
     let helper = true;
     heartBtn.addEventListener('click', function () {
-      if (helper) {
-        heartImg.src = '../images/bg-black-heart.png';
-      } else {
-        heartImg.src = '../images/bg-white-heart.png';
-      }
+      heartImg.src = helper ? '../images/bg-black-heart.png' : '../images/bg-white-heart.png';
       helper = !helper;
     });
     row.appendChild(heartAction);
 
     const btnAction = document.createElement('td');
     btnAction.classList.add('p-[10px]', 'text-center');
-
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('py-[6px]', 'px-3', 'text-white', 'bg-red-400', 'rounded-[4px]', 'active:scale-95');
     deleteBtn.textContent = 'Delete';
-
-    btnAction.appendChild(deleteBtn);
     deleteBtn.addEventListener('click', function () {
       row.remove();
     });
-    row.appendChild(btnAction);
 
+    btnAction.appendChild(deleteBtn);
+    row.appendChild(btnAction);
     tbody.appendChild(row);
   });
-  table.appendChild(tbody);
-}
 
-// Tugallanmagan
-function pagenation(){
-  let btns = [];
-  const div = document.createElement("div");
-  div.classList.add("flex", "border", "border-blue-400", "rounded-[2px]");
-  for(let i = 1; i <= 3; i++){
-    const btn = document.createElement("button");
-    btn.classList.add("w-6", "grid", "place-items-center", "focus:bg-blue-400", "focus:text-white");
-    if(i === 2){
-      btn.classList.add("border-l", "border-r", "border-blue-400");
-    }
-    btn.textContent = `${i}`;
-    div.appendChild(btn);
-    btns.push(btn);
+  const oldTbody = table.querySelector('tbody');
+  if (oldTbody) {
+    table.removeChild(oldTbody);
   }
-  document.querySelector("body")?.appendChild(div);
+  table.appendChild(tbody);
+
+  updatePaginationButtons();
 }
 
+function updatePaginationButtons() {
+  paginationDiv.innerHTML = "";
+  paginationDiv.classList.add("flex", "gap-2", "mt-4");
+
+  const totalPages = Math.ceil(state.movies.length / itemsPerPage);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const pageBtn = document.createElement("button");
+    pageBtn.textContent = `${i}`;
+    pageBtn.classList.add("px-4", "py-2", "rounded", "border", "border-blue-400");
+
+    if (i === currentPage) {
+      pageBtn.classList.add("bg-blue-400", "text-white");
+    }
+
+    pageBtn.addEventListener("click", () => {
+      currentPage = i;
+      createTbody();
+    });
+
+    paginationDiv.appendChild(pageBtn);
+  }
+}
+
+function renderFunction() {
+  document.body.appendChild(table);
+  createThead();
+  createTbody();
+  document.body.appendChild(paginationDiv);
+}
 renderFunction();

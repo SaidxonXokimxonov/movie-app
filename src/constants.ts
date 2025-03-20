@@ -42,5 +42,19 @@ export const state = {
             stock: 10,
             rate: 10,
         },
+        {
+            id: 7,
+            title: "Harry Potter",
+            ganre: "Fantastic",
+            stock: 10,
+            rate: 10,
+        },
+        {
+            id: 8,
+            title: "Jurassic 2",
+            ganre: "Fantastic",
+            stock: 9,
+            rate: 10,
+        },
     ]    
 }
