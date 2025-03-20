@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Database</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .button-animation {
+        transition: transform 0.2s ease-in-out;
+      }
+      .button-animation:hover {
+        transform: scale(1.05);
+      }
+      .genre-card {
+        transition: background-color 0.2s ease-in-out,
+          transform 0.2s ease-in-out;
+      }
+      .genre-card:hover {
+        background-color: #f3f4f6;
+        transform: translateX(5px);
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 p-6">
+    <!-- Menu -->
+    <div class="bg-white p-4 rounded-lg shadow-lg mb-6">
+      <ul class="flex space-x-4">
+        <li><a href="#" class="text-blue-500 hover:text-blue-700">Home</a></li>
+        <li>
+          <a href="#" class="text-blue-500 hover:text-blue-700">Movies</a>
+        </li>
+        <li>
+          <a href="#" class="text-blue-500 hover:text-blue-700">Genres</a>
+        </li>
+        <li><a href="#" class="text-blue-500 hover:text-blue-700">About</a></li>
+      </ul>
+    </div>
+
+    <div id="movie-list" class="flex">
+      <div class="bg-white p-4 rounded-lg shadow-lg w-1/6">
+        <h2 class="text-xl font-bold mb-4">Genres</h2>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="#"
+              class="p-3 rounded-lg block genre-card hover:bg-gray-100"
+            >
+              <span class="text-blue-500 hover:text-blue-700">All Genres</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="p-3 rounded-lg block genre-card hover:bg-gray-100"
+            >
+              <span class="text-blue-500 hover:text-blue-700">Action</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="p-3 rounded-lg block genre-card hover:bg-gray-100"
+            >
+              <span class="text-blue-500 hover:text-blue-700">Comedy</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="p-3 rounded-lg block genre-card hover:bg-gray-100"
+            >
+              <span class="text-blue-500 hover:text-blue-700">Thriller</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-4 rounded-lg shadow-lg w-5/6 ml-6">
+        <div class="mt-4">
+          <button
+            class="bg-blue-500 p-2 rounded-lg text-white button-animation hover:bg-blue-700"
+          >
+            Add Movie
+          </button>
+        </div>
+        <p class="mb-4">Showing 9 movies in the database.</p>
+        <input
+          type="text"
+          placeholder="Search..."
+          class="border border-gray-300 p-2 rounded-lg w-full mb-4"
+        />
+
+        <table class="w-full">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="p-2">Title</th>
+              <th class="p-2">Genre</th>
+              <th class="p-2">Stock</th>
+              <th class="p-2">Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="p-2">
+                <a
+                  href="#"
+                  class="text-blue-500 edit-movie hover:text-blue-700"
+                  data-title="Airplane"
+                  data-genre="Comedy"
+                  data-stock="7"
+                  data-rate="3.5"
+                  >Airplane</a
+                >
+              </td>
+              <td class="p-2">Comedy</td>
+
+              <td class="p-2">7</td>
+              <td class="p-2">3.5</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <a
+                  href="#"
+                  class="text-blue-500 edit-movie hover:text-blue-700"
+                  data-title="Die Hard"
+                  data-genre="Action"
+                  data-stock="5"
+                  data-rate="2.5"
+                  >Die Hard</a
+                >
+              </td>
+              <td class="p-2">Action</td>
+              <td class="p-2">5</td>
+              <td class="p-2">2.5</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <a
+                  href="#"
+                  class="text-blue-500 edit-movie hover:text-blue-700"
+                  data-title="Ost Out"
+                  data-genre="Thriller"
+                  data-stock="8"
+                  data-rate="3.5"
+                  >Ost Out</a
+                >
+              </td>
+              <td class="p-2">Thriller</td>
+              <td class="p-2">8</td>
+              <td class="p-2">3.5</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-2">
+                <a
+                  href="#"
+                  class="text-blue-500 edit-movie hover:text-blue-700"
+                  data-title="Gone Girl"
+                  data-genre="Thriller"
+                  data-stock="7"
+                  data-rate="4.5"
+                  >Gone Girl</a
+                >
+              </td>
+              <td class="p-2">Thriller</td>
+              <td class="p-2">7</td>
+              <td class="p-2">4.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Movie Form Section -->
+    <div id="movie-form" class="hidden">
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
+        <h1 class="text-xl font-bold mb-4">Edit Movie</h1>
+
+        <div class="mb-4">
+          <label class="text-gray-700 block">Title</label>
+          <input
+            type="text"
+            id="edit-title"
+            class="border border-gray-300 p-2 rounded-lg w-full"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="text-gray-700 block">Genre</label>
+          <input
+            type="text"
+            id="edit-genre"
+            class="border border-gray-300 p-2 rounded-lg w-full"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="text-gray-700 block">Number in Stock</label>
+          <input
+            type="number"
+            id="edit-stock"
+            class="border border-gray-300 p-2 rounded-lg w-full"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="text-gray-700 block">Rate</label>
+          <input
+            type="number"
+            id="edit-rate"
+            class="border border-gray-300 p-2 rounded-lg w-full"
+          />
+        </div>
+
+        <button
+          id="save-button"
+          class="bg-blue-500 p-2 rounded-lg text-white w-full button-animation hover:bg-blue-700"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
