@@ -104,18 +104,14 @@
               <th class="p-2">Genre</th>
               <th class="p-2">Stock</th>
               <th class="p-2">Rate</th>
+              <th class="p-2">Like</th>
+              <th class="p-2">Delete</th>
             </tr>
           </thead>
           <tbody>
             <tr class="border-b">
               <td class="p-2">
-                <a
-                  href="#"
-                  class="text-blue-500 edit-movie hover:text-blue-700"
-                  data-title="Airplane"
-                  data-genre="Comedy"
-                  data-stock="7"
-                  data-rate="3.5"
+                <a href="#" class="text-blue-500 edit-movie hover:text-blue-700"
                   >Airplane</a
                 >
               </td>
@@ -123,54 +119,68 @@
 
               <td class="p-2">7</td>
               <td class="p-2">3.5</td>
+              <td class="p-2">
+                <button class="like-button">🤍</button>
+              </td>
+              <td class="p-2">
+                <button class="text-red-500 delete-button hover:text-red-700">
+                  Delete
+                </button>
+              </td>
             </tr>
             <tr class="border-b">
               <td class="p-2">
-                <a
-                  href="#"
-                  class="text-blue-500 edit-movie hover:text-blue-700"
-                  data-title="Die Hard"
-                  data-genre="Action"
-                  data-stock="5"
-                  data-rate="2.5"
+                <a href="#" class="text-blue-500 edit-movie hover:text-blue-700"
                   >Die Hard</a
                 >
               </td>
               <td class="p-2">Action</td>
               <td class="p-2">5</td>
               <td class="p-2">2.5</td>
+              <td class="p-2">
+                <button class="like-button">🤍</button>
+              </td>
+              <td class="p-2">
+                <button class="text-red-500 delete-button hover:text-red-700">
+                  Delete
+                </button>
+              </td>
             </tr>
             <tr class="border-b">
               <td class="p-2">
-                <a
-                  href="#"
-                  class="text-blue-500 edit-movie hover:text-blue-700"
-                  data-title="Ost Out"
-                  data-genre="Thriller"
-                  data-stock="8"
-                  data-rate="3.5"
+                <a href="#" class="text-blue-500 edit-movie hover:text-blue-700"
                   >Ost Out</a
                 >
               </td>
               <td class="p-2">Thriller</td>
               <td class="p-2">8</td>
               <td class="p-2">3.5</td>
+              <td class="p-2">
+                <button class="like-button">🤍</button>
+              </td>
+              <td class="p-2">
+                <button class="text-red-500 delete-button hover:text-red-700">
+                  Delete
+                </button>
+              </td>
             </tr>
             <tr class="border-b">
               <td class="p-2">
-                <a
-                  href="#"
-                  class="text-blue-500 edit-movie hover:text-blue-700"
-                  data-title="Gone Girl"
-                  data-genre="Thriller"
-                  data-stock="7"
-                  data-rate="4.5"
+                <a href="#" class="text-blue-500 edit-movie hover:text-blue-700"
                   >Gone Girl</a
                 >
               </td>
               <td class="p-2">Thriller</td>
               <td class="p-2">7</td>
               <td class="p-2">4.5</td>
+              <td class="p-2">
+                <button class="like-button">🤍</button>
+              </td>
+              <td class="p-2">
+                <button class="text-red-500 delete-button hover:text-red-700">
+                  Delete
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -182,6 +192,7 @@
       <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
         <h1 class="text-xl font-bold mb-4">Edit Movie</h1>
 
+        <!-- Title -->
         <div class="mb-4">
           <label class="text-gray-700 block">Title</label>
           <input
@@ -191,6 +202,7 @@
           />
         </div>
 
+        <!-- Genre -->
         <div class="mb-4">
           <label class="text-gray-700 block">Genre</label>
           <input
@@ -200,6 +212,7 @@
           />
         </div>
 
+        <!-- Number in Stock-->
         <div class="mb-4">
           <label class="text-gray-700 block">Number in Stock</label>
           <input
@@ -209,6 +222,7 @@
           />
         </div>
 
+        <!-- Rate -->
         <div class="mb-4">
           <label class="text-gray-700 block">Rate</label>
           <input
@@ -218,6 +232,7 @@
           />
         </div>
 
+        <!-- Save Button -->
         <button
           id="save-button"
           class="bg-blue-500 p-2 rounded-lg text-white w-full button-animation hover:bg-blue-700"
@@ -226,5 +241,7 @@
         </button>
       </div>
     </div>
+
+    <script type="module" src="../build/index.js" defer></script>
   </body>
 </html>

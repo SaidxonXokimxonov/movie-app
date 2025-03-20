@@ -1,3 +1,7 @@
+/**
+ *  Login.html ning kodlari
+ * 
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const usernameInput = document.getElementById('username') as HTMLInputElement;
     const passwordInput = document.getElementById('password') as HTMLInputElement;
