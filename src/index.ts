@@ -101,4 +101,3 @@ function pagenation(){
 window.addEventListener('load', ()=>{
     renderFunction()
 })
-
